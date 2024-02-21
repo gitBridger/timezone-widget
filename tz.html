@@ -1,1 +1,1422 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=PT+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+    --color_bg: rgba(0, 0, 0, 1);
+    --color_z_sec: rgba(140, 140, 140, .5);
+    --color_text: rgba(255, 255, 255, 1);
+    --color_text_sec: rgba(255, 255, 255, .3);
+    --color_rule_1: #414141;
+    --color_rule_2: #292929;
+    --color_rule_3: #CCCCCC;
+    --color_accent: #F15B28;
+    --color_skrim: rgba(0, 0, 0, .5);
+    --transition_1: all ease-in-out 200ms;
+    --border-radius_1: 10px;
+    --border-radius_2: 16px;
+}
+body {
+    background: var(--color_bg);
+    color: var(--color_text);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 9vw 0;
+}
+.tz_container ul, .tz_container li {
+    margin: 0;
+    padding: 0;
+}
+.tz_container li {
+    list-style-type: none;
+}
 
+
+
+/* T Y P O G R A P H Y */
+
+.tz_container h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.5;
+    letter-spacing: 0;
+    word-spacing: 0;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+.tz_container h4, label div, .plusminus h4:after {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.3;
+    letter-spacing: .12em;
+    word-spacing: 0;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    text-transform: uppercase;
+}
+.plusminus h4:after {
+    font-size: 12px;
+}
+.tz ul li {
+    font-family: 'PT Mono', monospace;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 25px;
+    letter-spacing: 0.03em;
+    word-spacing: 0;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    text-transform: uppercase;
+}
+.tz a, .cityInput {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 0;
+    word-spacing: 0;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+
+
+/* H E A D E R */
+.tz_seasons {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    justify-content: start;
+    align-items: center;
+    padding: 0 10vw 5vw;
+    box-sizing: border-box;
+}
+
+.tz_seasons label input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0 !important;
+}
+.tz_seasons label div {
+    color: var(--color_text_sec);
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition_1);
+}
+.tz_seasons label div:before {
+    content: '';
+    display: block;
+    background: none;    
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--color_text_sec) inset;
+    transition: var(--transition_1);
+}
+.tz_seasons label:hover div:before {
+    box-shadow: 0 0 0 2px var(--color_text) inset;
+}
+.tz_seasons label:hover div {
+    color: var(--color_text);
+}
+.tz_seasons label input:checked ~ div {
+    color: var(--color_text);
+}
+.tz_seasons label input:checked ~ div:before {
+    box-shadow: 0 0 0 10px var(--color_accent) inset;
+}
+
+
+
+/* Z O N E S */
+
+.tz_container, .tz_seasons, .tz_zones {
+    width: 100%;
+    position: relative;
+}
+.tz_zones_container {
+    overflow-x: scroll;
+    width: 100%;
+    display: block;
+    position: relative;
+}
+.tz_zones {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    justify-content: start;
+    align-items: stretch;
+    width: fit-content;
+    padding: 0 10vw;
+}
+.tz_zones ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    justify-content: stretch;
+    align-items: start;
+    padding: 20px 0 1px;
+}
+.tz {
+    width: 180px;
+    position: relative;
+}
+.tz.primary {
+    width: 190px;
+    position: sticky;
+    left: 0;
+    background: var(--color_bg);
+    z-index: 30;
+}
+.tz.primary li {
+    padding: 0 20px 0 40px;
+}
+.tz_container .tz.primary h2, .tz_container .tz.primary h4 {
+    padding-right: 40px;
+}
+.tz_container .tz.primary li:before, .tz_container .tz.primary li:after {
+    width: 190px;
+}
+
+.tz ul li {
+    color: var(--color_text_sec);
+    height: 25px;
+    width: 100%;
+    padding: 0 10px 0 40px;
+    box-sizing: border-box;
+}
+.tz h2:before, .tz h2:after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 2px;
+    position: absolute;
+    left: 158px;
+    top: 13px;
+    background: var(--color_text);
+    transform: rotate(45deg);
+}
+.tz h2:after {
+    margin: 0 0 0 4px;
+    transform: rotate(-45deg);
+}
+.tz ul li:before, .tz ul li:after {
+    content: '';
+    display: block;
+    width: 180px;
+    height: 1px;
+    background: var(--color_rule_2);
+    margin: 0 0 -1px;
+    position: relative;
+    right: 40px;
+}
+.tz_container .tz h2, .tz_container .tz h4 {
+    padding-right: 30px;
+    box-sizing: border-box;
+}
+.tz ul li div {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+}
+.tz li:nth-child(8) div {  border-radius: var(--border-radius_1) var(--border-radius_1) 0 0; }
+.tz li:nth-child(18) div {  border-radius: 0 0 var(--border-radius_1) var(--border-radius_1) }
+
+.tz:not(.unset) li.dd div {
+    color: var(--color_text);
+}
+.tz:not(.unset) li.d div {
+    background: var(--color_z_sec);
+    color: var(--color_text);
+}
+.tz.unset li {
+    color: var(--color_text_sec);
+}
+.primary:before {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 1px;
+    background: var(--color_rule_1);
+}
+.tz_cities {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    cursor: pointer;
+}
+.tz_cities select {
+    width: 100%;
+    height: 100%;
+}
+.add_btn {
+    order: 9000;
+    width: 178px;
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed var(--color_rule_1);
+    border-radius: var(--border-radius_2);
+    margin: 0 0 0 20px;
+    cursor: pointer;
+    transition: var(--transition_1);
+}
+.add_btn:hover {
+    border: 1px dashed var(--color_text);
+}
+.add_btn span.plus_icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px var(--color_text);
+    position: relative;
+}
+.add_btn span.plus_icon:before, .add_btn span.plus_icon:after {
+    content: '';
+    display: block;
+    width: 13px;
+    height: 1px;
+    position: absolute;
+    left: 6px;
+    top: 12px;
+    background: var(--color_text);
+}
+.add_btn span.plus_icon:after {
+    transform: rotate(90deg);
+}
+
+.plusminus h4:after {
+    content: '';
+    background: var(--color_text);
+    color: var(--color_bg);
+    padding: 2px 6px 2px 4px;
+    margin: 0 -1px 0 2px;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+.unset.plusminus h4:after {
+    display: none;
+}
+.plus_1 h4:after {  content: '+1';    }
+.plus_2 h4:after {  content: '+2';    }
+.plus_3 h4:after {  content: '+3';    }
+.plus_4 h4:after {  content: '+4';    }
+.plus_5 h4:after {  content: '+5';    }
+.plus_6 h4:after {  content: '+6';    }
+.plus_7 h4:after {  content: '+7';    }
+.plus_8 h4:after {  content: '+8';    }
+.plus_9 h4:after {  content: '+9';    }
+.plus_10 h4:after {  content: '+10';    }
+.plus_11 h4:after {  content: '+11';    }
+.plus_12 h4:after {  content: '+12';    }
+
+.minus_1 h4:after {  content: '-1';    }
+.minus_2 h4:after {  content: '-2';    }
+.minus_3 h4:after {  content: '-3';    }
+.minus_4 h4:after {  content: '-4';    }
+.minus_5 h4:after {  content: '-5';    }
+.minus_6 h4:after {  content: '-6';    }
+.minus_7 h4:after {  content: '-7';    }
+.minus_8 h4:after {  content: '-8';    }
+.minus_9 h4:after {  content: '-9';    }
+.minus_10 h4:after {  content: '-10';    }
+.minus_11 h4:after {  content: '-11';    }
+.minus_12 h4:after {  content: '-12';    }
+
+
+
+.plus_1:not(.unset) li:nth-child(1) {   order: 24;   }
+
+.plus_2:not(.unset) li:nth-child(1) {   order: 23;   }
+.plus_2:not(.unset) li:nth-child(2) {   order: 24;   }
+
+.plus_3:not(.unset) li:nth-child(1) {   order: 22;   }
+.plus_3:not(.unset) li:nth-child(2) {   order: 23;   }
+.plus_3:not(.unset) li:nth-child(3) {   order: 24;   }
+
+.plus_4:not(.unset) li:nth-child(1) {  order: 21;   }
+.plus_4:not(.unset) li:nth-child(2) {  order: 22;   }
+.plus_4:not(.unset) li:nth-child(3) {  order: 23;   }
+.plus_4:not(.unset) li:nth-child(4) {  order: 24;   }
+
+.plus_5:not(.unset) li:nth-child(1) {  order: 20;   }
+.plus_5:not(.unset) li:nth-child(2) {  order: 21;   }
+.plus_5:not(.unset) li:nth-child(3) {  order: 22;   }
+.plus_5:not(.unset) li:nth-child(4) {  order: 23;   }
+.plus_5:not(.unset) li:nth-child(5) {  order: 24;   }
+
+.plus_6:not(.unset) li:nth-child(1) {  order: 19;   }
+.plus_6:not(.unset) li:nth-child(2) {  order: 20;   }
+.plus_6:not(.unset) li:nth-child(3) {  order: 21;   }
+.plus_6:not(.unset) li:nth-child(4) {  order: 22;   }
+.plus_6:not(.unset) li:nth-child(5) {  order: 23;   }
+.plus_6:not(.unset) li:nth-child(6) {  order: 24;   }
+
+.plus_7:not(.unset) li:nth-child(1) {  order: 18;   }
+.plus_7:not(.unset) li:nth-child(2) {  order: 19;   }
+.plus_7:not(.unset) li:nth-child(3) {  order: 20;   }
+.plus_7:not(.unset) li:nth-child(4) {  order: 21;   }
+.plus_7:not(.unset) li:nth-child(5) {  order: 22;   }
+.plus_7:not(.unset) li:nth-child(6) {  order: 23;   }
+.plus_7:not(.unset) li:nth-child(7) {  order: 24;   }
+
+.plus_8:not(.unset) li:nth-child(1) {  order: 17;   }
+.plus_8:not(.unset) li:nth-child(2) {  order: 18;   }
+.plus_8:not(.unset) li:nth-child(3) {  order: 19;   }
+.plus_8:not(.unset) li:nth-child(4) {  order: 20;   }
+.plus_8:not(.unset) li:nth-child(5) {  order: 21;   }
+.plus_8:not(.unset) li:nth-child(6) {  order: 22;   }
+.plus_8:not(.unset) li:nth-child(7) {  order: 23;   }
+.plus_8:not(.unset) li:nth-child(8) {  order: 24;   }
+
+.plus_9:not(.unset) li:nth-child(1) {  order: 16;   }
+.plus_9:not(.unset) li:nth-child(2) {  order: 17;   }
+.plus_9:not(.unset) li:nth-child(3) {  order: 18;   }
+.plus_9:not(.unset) li:nth-child(4) {  order: 19;   }
+.plus_9:not(.unset) li:nth-child(5) {  order: 20;   }
+.plus_9:not(.unset) li:nth-child(6) {  order: 21;   }
+.plus_9:not(.unset) li:nth-child(7) {  order: 22;   }
+.plus_9:not(.unset) li:nth-child(8) {  order: 23;   }
+.plus_9:not(.unset) li:nth-child(9) {  order: 24;   }
+
+.plus_10:not(.unset) li:nth-child(1) {  order: 15;   }
+.plus_10:not(.unset) li:nth-child(2) {  order: 16;   }
+.plus_10:not(.unset) li:nth-child(3) {  order: 17;   }
+.plus_10:not(.unset) li:nth-child(4) {  order: 18;   }
+.plus_10:not(.unset) li:nth-child(5) {  order: 19;   }
+.plus_10:not(.unset) li:nth-child(6) {  order: 20;   }
+.plus_10:not(.unset) li:nth-child(7) {  order: 21;   }
+.plus_10:not(.unset) li:nth-child(8) {  order: 22;   }
+.plus_10:not(.unset) li:nth-child(9) {  order: 23;   }
+.plus_10:not(.unset) li:nth-child(10) { order: 24;   }
+
+.plus_11:not(.unset) li:nth-child(1) {  order: 14;   }
+.plus_11:not(.unset) li:nth-child(2) {  order: 15;   }
+.plus_11:not(.unset) li:nth-child(3) {  order: 16;   }
+.plus_11:not(.unset) li:nth-child(4) {  order: 17;   }
+.plus_11:not(.unset) li:nth-child(5) {  order: 18;   }
+.plus_11:not(.unset) li:nth-child(6) {  order: 19;   }
+.plus_11:not(.unset) li:nth-child(7) {  order: 20;   }
+.plus_11:not(.unset) li:nth-child(8) {  order: 21;   }
+.plus_11:not(.unset) li:nth-child(9) {  order: 22;   }
+.plus_11:not(.unset) li:nth-child(10) { order: 23;   }
+.plus_11:not(.unset) li:nth-child(11) { order: 24;   }
+
+.plus_12:not(.unset) li:nth-child(1) {  order: 13;   }
+.plus_12:not(.unset) li:nth-child(2) {  order: 14;   }
+.plus_12:not(.unset) li:nth-child(3) {  order: 15;   }
+.plus_12:not(.unset) li:nth-child(4) {  order: 16;   }
+.plus_12:not(.unset) li:nth-child(5) {  order: 17;   }
+.plus_12:not(.unset) li:nth-child(6) {  order: 18;   }
+.plus_12:not(.unset) li:nth-child(7) {  order: 19;   }
+.plus_12:not(.unset) li:nth-child(8) {  order: 20;   }
+.plus_12:not(.unset) li:nth-child(9) {  order: 21;   }
+.plus_12:not(.unset) li:nth-child(10) { order: 22;   }
+.plus_12:not(.unset) li:nth-child(11) { order: 23;   }
+.plus_12:not(.unset) li:nth-child(12) { order: 24;   }
+
+
+
+.minus_1:not(.unset) li:nth-child(24) {   order: -1;   }
+
+.minus_2:not(.unset) li:nth-child(24) {   order: -1;   }
+.minus_2:not(.unset) li:nth-child(23) {   order: -1;   }
+
+.minus_3:not(.unset) li:nth-child(24) {   order: -1;   }
+.minus_3:not(.unset) li:nth-child(23) {   order: -1;   }
+.minus_3:not(.unset) li:nth-child(22) {   order: -1;   }
+
+.minus_4:not(.unset) li:nth-child(24) {   order: -1;   }
+.minus_4:not(.unset) li:nth-child(23) {   order: -1;   }
+.minus_4:not(.unset) li:nth-child(22) {   order: -1;   }
+.minus_4:not(.unset) li:nth-child(21) {   order: -1;   }
+
+.minus_5:not(.unset) li:nth-child(24) {   order: -1;   }
+.minus_5:not(.unset) li:nth-child(23) {   order: -1;   }
+.minus_5:not(.unset) li:nth-child(22) {   order: -1;   }
+.minus_5:not(.unset) li:nth-child(21) {   order: -1;   }
+.minus_5:not(.unset) li:nth-child(20) {   order: -1;   }
+
+.minus_6:not(.unset) li:nth-child(24) {   order: -1;   }
+.minus_6:not(.unset) li:nth-child(23) {   order: -1;   }
+.minus_6:not(.unset) li:nth-child(22) {   order: -1;   }
+.minus_6:not(.unset) li:nth-child(21) {   order: -1;   }
+.minus_6:not(.unset) li:nth-child(20) {   order: -1;   }
+.minus_6:not(.unset) li:nth-child(19) {   order: -1;   }
+
+.minus_7:not(.unset) li:nth-child(24) {   order: -1;   }
+.minus_7:not(.unset) li:nth-child(23) {   order: -1;   }
+.minus_7:not(.unset) li:nth-child(22) {   order: -1;   }
+.minus_7:not(.unset) li:nth-child(21) {   order: -1;   }
+.minus_7:not(.unset) li:nth-child(20) {   order: -1;   }
+.minus_7:not(.unset) li:nth-child(19) {   order: -1;   }
+.minus_7:not(.unset) li:nth-child(18) {   order: -1;   }
+
+.minus_8:not(.unset) li:nth-child(24) {   order: -1;   }
+.minus_8:not(.unset) li:nth-child(23) {   order: -1;   }
+.minus_8:not(.unset) li:nth-child(22) {   order: -1;   }
+.minus_8:not(.unset) li:nth-child(21) {   order: -1;   }
+.minus_8:not(.unset) li:nth-child(20) {   order: -1;   }
+.minus_8:not(.unset) li:nth-child(19) {   order: -1;   }
+.minus_8:not(.unset) li:nth-child(18) {   order: -1;   }
+.minus_8:not(.unset) li:nth-child(17) {   order: -1;   }
+
+.minus_9:not(.unset) li:nth-child(24) {   order: -1;   }
+.minus_9:not(.unset) li:nth-child(23) {   order: -1;   }
+.minus_9:not(.unset) li:nth-child(22) {   order: -1;   }
+.minus_9:not(.unset) li:nth-child(21) {   order: -1;   }
+.minus_9:not(.unset) li:nth-child(20) {   order: -1;   }
+.minus_9:not(.unset) li:nth-child(19) {   order: -1;   }
+.minus_9:not(.unset) li:nth-child(18) {   order: -1;   }
+.minus_9:not(.unset) li:nth-child(17) {   order: -1;   }
+.minus_9:not(.unset) li:nth-child(16) {   order: -1;   }
+
+.minus_10:not(.unset) li:nth-child(24) {   order: -1;   }
+.minus_10:not(.unset) li:nth-child(23) {   order: -1;   }
+.minus_10:not(.unset) li:nth-child(22) {   order: -1;   }
+.minus_10:not(.unset) li:nth-child(21) {   order: -1;   }
+.minus_10:not(.unset) li:nth-child(20) {   order: -1;   }
+.minus_10:not(.unset) li:nth-child(19) {   order: -1;   }
+.minus_10:not(.unset) li:nth-child(18) {   order: -1;   }
+.minus_10:not(.unset) li:nth-child(17) {   order: -1;   }
+.minus_10:not(.unset) li:nth-child(16) {   order: -1;   }
+.minus_10:not(.unset) li:nth-child(15) {   order: -1;   }
+
+.minus_11:not(.unset) li:nth-child(24) {   order: -1;   }
+.minus_11:not(.unset) li:nth-child(23) {   order: -1;   }
+.minus_11:not(.unset) li:nth-child(22) {   order: -1;   }
+.minus_11:not(.unset) li:nth-child(21) {   order: -1;   }
+.minus_11:not(.unset) li:nth-child(20) {   order: -1;   }
+.minus_11:not(.unset) li:nth-child(19) {   order: -1;   }
+.minus_11:not(.unset) li:nth-child(18) {   order: -1;   }
+.minus_11:not(.unset) li:nth-child(17) {   order: -1;   }
+.minus_11:not(.unset) li:nth-child(16) {   order: -1;   }
+.minus_11:not(.unset) li:nth-child(15) {   order: -1;   }
+.minus_11:not(.unset) li:nth-child(14) {   order: -1;   }
+
+.minus_12:not(.unset) li:nth-child(24) {   order: -1;   }
+.minus_12:not(.unset) li:nth-child(23) {   order: -1;   }
+.minus_12:not(.unset) li:nth-child(22) {   order: -1;   }
+.minus_12:not(.unset) li:nth-child(21) {   order: -1;   }
+.minus_12:not(.unset) li:nth-child(20) {   order: -1;   }
+.minus_12:not(.unset) li:nth-child(19) {   order: -1;   }
+.minus_12:not(.unset) li:nth-child(18) {   order: -1;   }
+.minus_12:not(.unset) li:nth-child(17) {   order: -1;   }
+.minus_12:not(.unset) li:nth-child(16) {   order: -1;   }
+.minus_12:not(.unset) li:nth-child(15) {   order: -1;   }
+.minus_12:not(.unset) li:nth-child(14) {   order: -1;   }
+.minus_12:not(.unset) li:nth-child(13) {   order: -1;   }
+
+
+
+
+
+
+.dropbtn {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: relative;
+    z-index: 9;
+}
+
+.cityInput {
+    box-sizing: border-box;
+    background: none;
+    padding: 34px 15px 6px;
+    margin-bottom: 10px;
+    border: none;
+    box-shadow: 0 1px 0 0 var(--color_rule_3);
+    width: 100%;
+    height: 64px;
+    alignment-baseline: baseline;
+    position: sticky;
+    top: 0;
+    background: var(--color_text);
+}
+.cityInput:focus {  outline: none;    }
+
+.cityDropdown {
+    display: none;
+    position: absolute;
+    z-index: 11;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 665px;
+    background: var(--color_text);
+    border-radius: 16px;
+    overflow-y: scroll;
+}
+.show .cityDropdown {   display: block; }
+
+.cityDropdown a {
+    color: var(--color_bg);
+    padding: 5px 15px;
+    text-decoration: none;
+    display: block;
+}
+.cityDropdown a:last-child {
+    margin-bottom: 100px;
+}
+
+.cityDropdown a:hover {background-color: #f1f1f1}
+
+.blocker {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: ' ';
+    background: var(--color_skrim);
+}
+.show .blocker {    display: block; }
+
+.remove_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    position: relative;
+    margin: 20px 18px -12px 0;
+}
+.remove {
+    display: block;
+    position: relative;
+    width: auto;
+    background: none;
+    outline: none;
+    border: none;
+    opacity: 0;
+    padding: 3px 10px;
+    color: var(--color_accent);
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 1.3;
+    letter-spacing: .12em;
+    word-spacing: 0;
+    text-transform: uppercase;
+    transition: var(--transition_1);
+    cursor: pointer;
+}
+.tz:hover .remove {
+    opacity: 1;
+}
+.remove:hover {
+    box-shadow: 0 0 0 1px var(--color_accent);
+}
+
+#primary ul {
+    padding-top: 46px;
+}
+
+
+
+</style>
+
+<section class="tz_container">
+
+<!--
+    <section class="tz_seasons">
+        <label onclick="dstUSA()" id="dst_on" class="active">
+            <input type="radio" name="tz_seasons" checked="checked" />
+            <div>Summer (Daylight Savings)</div>
+        </label>
+        <label onclick="dstToggleOff()" id="dst_off">
+            <input type="radio" name="tz_seasons" />
+            <div>Winter</div>
+        </label>
+    </section>
+-->
+
+    <section class="tz_zones_container">
+        <div id="tz_zones" class="tz_zones">
+
+
+            <div id="primary" class="tz primary" zone="4" dstVal="1" dst="true">
+                <div class="tz_cities">
+                    <button class="dropbtn" onclick="cityListToggle()">Dropdown</button>
+                    <div class="blocker" onclick="cityListToggle()"></div>
+                    <div class="cityDropdown">
+                        <input type="text" placeholder="Search.." class="cityInput" onkeyup="cityFilter()">
+                        <a onclick="cityChosen()" zone="13" zone_code="WAT" city="Abuja">Abuja, Nigeria</a>
+                        <a onclick="cityChosen()" zone="3" zone_code="AKST" dst="true" city="Anchorage">Anchorage, USA</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EEST" city="Ankara">Ankara, Turkey</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EAT" city="Antananarivo">Antananarivo, Madagascar</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="PYST" city="Asuncion">Asuncion, Paraguay</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="EET" eu="true" city="Athens">Athens, Greece</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Atlanta">Atlanta, USA</a>
+                        <a onclick="cityChosen()" zone="0" zone_code="NZST" nz="true" city="Auckland">Auckland, New Zealand</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EEST" city="Baghdad">Baghdad, Iraq</a>
+                        <a onclick="cityChosen()" zone="0" zone_code="AoE" city="Baker Island">Baker Island</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" city="Bamako">Bamako, Mali</a>
+                        <a onclick="cityChosen()" zone="19" zone_code="ICT" city="Bangkok">Bangkok, Thailand</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Barcelona">Barcelona, Spain</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="CST" city="Beijing">Beijing, China</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="BRT" city="Bel&eacute;m">Bel&eacute;m, Brazil</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Belgrade">Belgrade, Serbia</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="Belmopan">Belmopan, Belize</a>
+                        <a onclick="cityChosen()" zone="18" zone_code="IST" city="Bengaluru">Bengaluru, India</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Berlin">Berlin, Germany</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="COT" city="Bogota">Bogota, Columbia</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Boston">Boston, USA</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="BRT" city="Brasilia">Brasilia, Brazil</a>
+                        <a onclick="cityChosen()" zone="22" zone_code="AEST" city="Brisbane">Brisbane, Australia</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Budapest">Budapest, Hungary</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="ART" city="Buenos Aires">Buenos Aires, Argentina</a>
+                        <a onclick="cityChosen()" zone="22" zone_code="AEST" city="Cairns">Cairns, Australia</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" dst="true" city="Calgary">Calgary, Canada</a>
+                        <a onclick="cityChosen()" zone="22" zone_code="AEST" aus="true" city="Canberra">Canberra, Australia</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="SAST" city="Cape Town">Cape Town, South Africa</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="VET" city="Caracas">Caracas, Venezuela</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" eu="true" city="Cardiff">Cardiff, UK</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" dst="true" city="Chicago">Chicago, USA</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Copenhagen">Copenhagen, Denmark</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="ART" city="C&oacute;rdoba">C&oacute;rdoba, Argentina</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EEST" city="Damascus">Damascus, Syria</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" dst="true" city="Denver">Denver, USA</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Detroit">Detroit, USA</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" eu="true" city="Dublin">Dublin, Ireland</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" eu="true" city="Edinburgh">Edinburgh, UK</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" dst="true" city="Edmonton">Edmonton, Canada</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="BRT" city="Fortaleza">Fortaleza, Brazil</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="Guatemala City">Guatemala City, Guatemala</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="AST" dst="true" city="Halifax">Halifax, Canada</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="AST" city="Hamilton">Hamilton, Bermuda</a>
+                        <a onclick="cityChosen()" zone="19" zone_code="ICT" city="Hanoi">Hanoi, Vietnam</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="EST" dst="true" city="Havana">Havana, Cuba</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="EET" eu="true" city="Helsinki">Helsinki, Finland</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" city="Hermosillo">Hermosillo, Mexico</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="HKT" city="Hong Kong">Hong Kong, Hong Kong</a>
+                        <a onclick="cityChosen()" zone="2" zone_code="HST" city="Honolulu">Honolulu, USA</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" dst="true" city="Houston">Houston, USA</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Indianapolis">Indianapolis, USA</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EEST" city="Instanbul">Instanbul, Turkey</a>
+                        <a onclick="cityChosen()" zone="19" zone_code="ICT" city="Jakarta">Jakarta, Indonesia</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="SAST" city="Johannesburg">Johannesburg, South Africa</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" dst="true" city="Kansas City">Kansas City, USA</a>
+                        <a onclick="cityChosen()" zone="17" zone_code="PKT" city="Karachi">Karachi, Pakistan</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" city="Kingston">Kingston, Jamaica</a>
+                        <a onclick="cityChosen()" zone="18" zone_code="IST" city="Kolkata">Kolkata, India</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="MYT" city="Kuala Lumpur">Kuala Lumpur, Malaysia</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="EET" eu="true" city="Kyiv">Kyiv, Ukraine</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="BOT" city="La Paz">La Paz, Bolivia</a>
+                        <a onclick="cityChosen()" zone="4" zone_code="PST" dst="true" city="Las Vegas">Las Vegas, USA</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="PET" city="Lima">Lima, Peru</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" eu="true" city="London">London, UK</a>
+                        <a onclick="cityChosen()" zone="4" zone_code="PST" dst="true" city="Los Angeles">Los Angeles, USA</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" eu="true" city="Lisbon">Lisbon, Portugal</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Luxembourg">Luxembourg</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Madrid">Madrid, Spain</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="Managua">Managua, Nicaragua</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="BRT" city="Manaus">Manaus, Brazil</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="PHST" city="Manila">Manila, Phillipines</a>
+                        <a onclick="cityChosen()" zone="21" zone_code="WIT" city="Manokwari">Manokwari, Indonesia</a>
+                        <a onclick="cityChosen()" zone="22" zone_code="AEST" aus="true" city="Melbourne">Melbourne, Australia</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="Mexico City">Mexico City, Mexico</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Miami">Miami, USA</a>
+                        <a onclick="cityChosen()" zone="1" zone_code="SST" city="Midway">Midway</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" dst="true" city="Minneapolis">Minneapolis, USA</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="MSK" city="Minsk">Minsk, Belarus</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" city="Monrovia">Monrovia, Liberia</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="URT" city="Montevideo">Montevideo, Uruguay</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Montr&eacute;al">Montr&eacute;al, Canada</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="MSK" city="Moscow">Moscow, Russia</a>
+                        <a onclick="cityChosen()" zone="18" zone_code="IST" city="Mumbai">Mumbai, India</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" city="Nassau">Nassau, Bahamas</a>
+                        <a onclick="cityChosen()" zone="18" zone_code="IST" city="New Delhi">New Delhi, India</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" dst="true" city="New Orleans">New Orleans, USA</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="New York City">New York City, USA</a>
+                        <a onclick="cityChosen()" zone="10" zone_code="CGT" city="Nuuk">Nuuk, Greenland</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Oslow">Oslow, Norway</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Ottowa">Ottowa, Canada</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Paris">Paris, France</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="AWST" city="Perth">Perth, Australia</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Philadelphia">Philadelphia, USA</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" city="Phoenix">Phoenix, USA</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" city="Port-au-Prince">Port-au-Prince, Haiti</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Prague">Prague, Czechia</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="SAST" city="Pretoria">Pretoria, South Africa</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="CLST" city="Punta Arenas">Punta Arenas, Chile</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="ECT" city="Quito">Quito, Ecuador</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" city="Reykjavik">Reykjavik, Iceland</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="ACT" city="Rio Branco">Rio Branco, Brazil</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="AMT" city="Rio de Janeiro">Rio de Janeiro, Brazil</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EEST" city="Riyadh">Riyadh, Saudi Arabia</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Rome">Rome, Italy</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" dst="true" city="Salt Lake City">Salt Lake City, USA</a>
+                        <a onclick="cityChosen()" zone="4" zone_code="PST" dst="true" city="San Diego" selected>San Diego, USA</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="San Jose">San Jose, Costa Rica</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="San Salvador">San Salvador, El Salvador</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="CLST" city="Santiago">Santiago, Chile</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="AST" city="Santo Domingo">Santo Domingo, Dominican Republic</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="BRT" city="S&atilde;o Paulo">S&atilde;o Paulo, Brazil</a>
+                        <a onclick="cityChosen()" zone="4" zone_code="PST" dst="true" city="Seattle">Seattle, USA</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="CST" city="Shanghai">Shanghai, China</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="SGT" city="Singapore">Singapore</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Stockholm">Stockholm, Sweden</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="BOT" city="Sucre">Sucre, Bolivia</a>
+                        <a onclick="cityChosen()" zone="22" zone_code="AEST" aus="true" city="Sydney">Sydney, Australia</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="CST" city="Taipei">Taipei, Taiwan</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="Tegucigalpa">Tegucigalpa, Honduras</a>
+                        <a onclick="cityChosen()" zone="21" zone_code="JST" city="Tokyo">Tokyo, Japan</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Toronto">Toronto, Canada</a>
+                        <a onclick="cityChosen()" zone="4" zone_code="PST" dst="true" city="Vancouver">Vancouver, Canada</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Vienna">Vienna, Austria</a>
+                        <a onclick="cityChosen()" zone="19" zone_code="ICT" city="Vientiane">Vientiane, Laos</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Warsaw">Warsaw, Poland</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Washington DC">Washington DC, USA</a>
+                        <a onclick="cityChosen()" zone="0" zone_code="NZST" nz="true" city="Wellington">Wellington, New Zealand</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Z&uuml;rich">Z&uuml;rich, Switzerland</a>
+                    </div>
+                </div>
+                <h2 class="city_display">San Diego</h2>
+                <h4 class="zone_display">PST</h4>
+                <ul class="times">
+                    <li><div>1:00 AM</div></li>
+                    <li><div>2:00 AM</div></li>
+                    <li><div>3:00 AM</div></li>
+                    <li><div>4:00 AM</div></li>
+                    <li class="dd"><div>5:00 AM</div></li>
+                    <li class="dd"><div>6:00 AM</div></li>
+                    <li class="dd"><div>7:00 AM</div></li>
+                    <li class="d"><div>8:00 AM</div></li>
+                    <li class="d"><div>9:00 AM</div></li>
+                    <li class="d"><div>10:00 AM</div></li>
+                    <li class="d"><div>11:00 AM</div></li>
+                    <li class="d"><div>12:00 PM</div></li>
+                    <li class="d"><div>1:00 PM</div></li>
+                    <li class="d"><div>2:00 PM</div></li>
+                    <li class="d"><div>3:00 PM</div></li>
+                    <li class="d"><div>4:00 PM</div></li>
+                    <li class="d"><div>5:00 PM</div></li>
+                    <li class="d"><div>6:00 PM</div></li>
+                    <li class="dd"><div>7:00 PM</div></li>
+                    <li class="dd"><div>8:00 PM</div></li>
+                    <li><div>9:00 PM</div></li>
+                    <li><div>10:00 PM</div></li>
+                    <li><div>11:00 PM</div></li>
+                    <li><div>12:00 AM</div></li>
+                </ul>
+            </div>
+
+            <div class="tz unset">
+                <div class="tz_cities">
+                    <button class="dropbtn" onclick="cityListToggle()">Dropdown</button>
+                    <div class="blocker" onclick="cityListToggle()"></div>
+                    <div class="cityDropdown">
+                        <input type="text" placeholder="Search.." class="cityInput" onkeyup="cityFilter()">
+                        <a onclick="cityChosen()" zone="13" zone_code="WAT" city="Abuja">Abuja, Nigeria</a>
+                        <a onclick="cityChosen()" zone="3" zone_code="AKST" dst="true" city="Anchorage">Anchorage, USA</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EEST" city="Ankara">Ankara, Turkey</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EAT" city="Antananarivo">Antananarivo, Madagascar</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="PYST" city="Asuncion">Asuncion, Paraguay</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="EET" eu="true" city="Athens">Athens, Greece</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Atlanta">Atlanta, USA</a>
+                        <a onclick="cityChosen()" zone="0" zone_code="NZST" nz="true" city="Auckland">Auckland, New Zealand</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EEST" city="Baghdad">Baghdad, Iraq</a>
+                        <a onclick="cityChosen()" zone="0" zone_code="AoE" city="Baker Island">Baker Island</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" city="Bamako">Bamako, Mali</a>
+                        <a onclick="cityChosen()" zone="19" zone_code="ICT" city="Bangkok">Bangkok, Thailand</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Barcelona">Barcelona, Spain</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="CST" city="Beijing">Beijing, China</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="BRT" city="Bel&eacute;m">Bel&eacute;m, Brazil</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Belgrade">Belgrade, Serbia</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="Belmopan">Belmopan, Belize</a>
+                        <a onclick="cityChosen()" zone="18" zone_code="IST" city="Bengaluru">Bengaluru, India</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Berlin">Berlin, Germany</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="COT" city="Bogota">Bogota, Columbia</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Boston">Boston, USA</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="BRT" city="Brasilia">Brasilia, Brazil</a>
+                        <a onclick="cityChosen()" zone="22" zone_code="AEST" city="Brisbane">Brisbane, Australia</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Budapest">Budapest, Hungary</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="ART" city="Buenos Aires">Buenos Aires, Argentina</a>
+                        <a onclick="cityChosen()" zone="22" zone_code="AEST" city="Cairns">Cairns, Australia</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" dst="true" city="Calgary">Calgary, Canada</a>
+                        <a onclick="cityChosen()" zone="22" zone_code="AEST" aus="true" city="Canberra">Canberra, Australia</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="SAST" city="Cape Town">Cape Town, South Africa</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="VET" city="Caracas">Caracas, Venezuela</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" eu="true" city="Cardiff">Cardiff, UK</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" dst="true" city="Chicago">Chicago, USA</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Copenhagen">Copenhagen, Denmark</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="ART" city="C&oacute;rdoba">C&oacute;rdoba, Argentina</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EEST" city="Damascus">Damascus, Syria</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" dst="true" city="Denver">Denver, USA</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Detroit">Detroit, USA</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" eu="true" city="Dublin">Dublin, Ireland</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" eu="true" city="Edinburgh">Edinburgh, UK</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" dst="true" city="Edmonton">Edmonton, Canada</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="BRT" city="Fortaleza">Fortaleza, Brazil</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="Guatemala City">Guatemala City, Guatemala</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="AST" dst="true" city="Halifax">Halifax, Canada</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="AST" city="Hamilton">Hamilton, Bermuda</a>
+                        <a onclick="cityChosen()" zone="19" zone_code="ICT" city="Hanoi">Hanoi, Vietnam</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="EST" dst="true" city="Havana">Havana, Cuba</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="EET" eu="true" city="Helsinki">Helsinki, Finland</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" city="Hermosillo">Hermosillo, Mexico</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="HKT" city="Hong Kong">Hong Kong, Hong Kong</a>
+                        <a onclick="cityChosen()" zone="2" zone_code="HST" city="Honolulu">Honolulu, USA</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" dst="true" city="Houston">Houston, USA</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Indianapolis">Indianapolis, USA</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EEST" city="Instanbul">Instanbul, Turkey</a>
+                        <a onclick="cityChosen()" zone="19" zone_code="ICT" city="Jakarta">Jakarta, Indonesia</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="SAST" city="Johannesburg">Johannesburg, South Africa</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" dst="true" city="Kansas City">Kansas City, USA</a>
+                        <a onclick="cityChosen()" zone="17" zone_code="PKT" city="Karachi">Karachi, Pakistan</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" city="Kingston">Kingston, Jamaica</a>
+                        <a onclick="cityChosen()" zone="18" zone_code="IST" city="Kolkata">Kolkata, India</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="MYT" city="Kuala Lumpur">Kuala Lumpur, Malaysia</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="EET" eu="true" city="Kyiv">Kyiv, Ukraine</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="BOT" city="La Paz">La Paz, Bolivia</a>
+                        <a onclick="cityChosen()" zone="4" zone_code="PST" dst="true" city="Las Vegas">Las Vegas, USA</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="PET" city="Lima">Lima, Peru</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" eu="true" city="London">London, UK</a>
+                        <a onclick="cityChosen()" zone="4" zone_code="PST" dst="true" city="Los Angeles">Los Angeles, USA</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" eu="true" city="Lisbon">Lisbon, Portugal</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Luxembourg">Luxembourg</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Madrid">Madrid, Spain</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="Managua">Managua, Nicaragua</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="BRT" city="Manaus">Manaus, Brazil</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="PHST" city="Manila">Manila, Phillipines</a>
+                        <a onclick="cityChosen()" zone="21" zone_code="WIT" city="Manokwari">Manokwari, Indonesia</a>
+                        <a onclick="cityChosen()" zone="22" zone_code="AEST" aus="true" city="Melbourne">Melbourne, Australia</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="Mexico City">Mexico City, Mexico</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Miami">Miami, USA</a>
+                        <a onclick="cityChosen()" zone="1" zone_code="SST" city="Midway">Midway</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" dst="true" city="Minneapolis">Minneapolis, USA</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="MSK" city="Minsk">Minsk, Belarus</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" city="Monrovia">Monrovia, Liberia</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="URT" city="Montevideo">Montevideo, Uruguay</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Montr&eacute;al">Montr&eacute;al, Canada</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="MSK" city="Moscow">Moscow, Russia</a>
+                        <a onclick="cityChosen()" zone="18" zone_code="IST" city="Mumbai">Mumbai, India</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" city="Nassau">Nassau, Bahamas</a>
+                        <a onclick="cityChosen()" zone="18" zone_code="IST" city="New Delhi">New Delhi, India</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" dst="true" city="New Orleans">New Orleans, USA</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="New York City">New York City, USA</a>
+                        <a onclick="cityChosen()" zone="10" zone_code="CGT" city="Nuuk">Nuuk, Greenland</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Oslow">Oslow, Norway</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Ottowa">Ottowa, Canada</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Paris">Paris, France</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="AWST" city="Perth">Perth, Australia</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Philadelphia">Philadelphia, USA</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" city="Phoenix">Phoenix, USA</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" city="Port-au-Prince">Port-au-Prince, Haiti</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Prague">Prague, Czechia</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="SAST" city="Pretoria">Pretoria, South Africa</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="CLST" city="Punta Arenas">Punta Arenas, Chile</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="ECT" city="Quito">Quito, Ecuador</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" city="Reykjavik">Reykjavik, Iceland</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="ACT" city="Rio Branco">Rio Branco, Brazil</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="AMT" city="Rio de Janeiro">Rio de Janeiro, Brazil</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EEST" city="Riyadh">Riyadh, Saudi Arabia</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Rome">Rome, Italy</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" dst="true" city="Salt Lake City">Salt Lake City, USA</a>
+                        <a onclick="cityChosen()" zone="4" zone_code="PST" dst="true" city="San Diego">San Diego, USA</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="San Jose">San Jose, Costa Rica</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="San Salvador">San Salvador, El Salvador</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="CLST" city="Santiago">Santiago, Chile</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="AST" city="Santo Domingo">Santo Domingo, Dominican Republic</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="BRT" city="S&atilde;o Paulo">S&atilde;o Paulo, Brazil</a>
+                        <a onclick="cityChosen()" zone="4" zone_code="PST" dst="true" city="Seattle">Seattle, USA</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="CST" city="Shanghai">Shanghai, China</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="SGT" city="Singapore">Singapore</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Stockholm">Stockholm, Sweden</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="BOT" city="Sucre">Sucre, Bolivia</a>
+                        <a onclick="cityChosen()" zone="22" zone_code="AEST" aus="true" city="Sydney">Sydney, Australia</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="CST" city="Taipei">Taipei, Taiwan</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="Tegucigalpa">Tegucigalpa, Honduras</a>
+                        <a onclick="cityChosen()" zone="21" zone_code="JST" city="Tokyo">Tokyo, Japan</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Toronto">Toronto, Canada</a>
+                        <a onclick="cityChosen()" zone="4" zone_code="PST" dst="true" city="Vancouver">Vancouver, Canada</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Vienna">Vienna, Austria</a>
+                        <a onclick="cityChosen()" zone="19" zone_code="ICT" city="Vientiane">Vientiane, Laos</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Warsaw">Warsaw, Poland</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Washington DC">Washington DC, USA</a>
+                        <a onclick="cityChosen()" zone="0" zone_code="NZST" nz="true" city="Wellington">Wellington, New Zealand</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Z&uuml;rich">Z&uuml;rich, Switzerland</a>
+                    </div>
+                </div>
+                <h2 class="city_display">Select City</h2>
+                <h4 class="zone_display">&nbsp;</h4>
+                <div class="remove_container"><button class="remove" onclick="removeZone()">Remove</button></div>
+                <ul class="times">
+                    <li><div>1:00 AM</div></li>
+                    <li><div>2:00 AM</div></li>
+                    <li><div>3:00 AM</div></li>
+                    <li><div>4:00 AM</div></li>
+                    <li class="dd"><div>5:00 AM</div></li>
+                    <li class="dd"><div>6:00 AM</div></li>
+                    <li class="dd"><div>7:00 AM</div></li>
+                    <li class="d"><div>8:00 AM</div></li>
+                    <li class="d"><div>9:00 AM</div></li>
+                    <li class="d"><div>10:00 AM</div></li>
+                    <li class="d"><div>11:00 AM</div></li>
+                    <li class="d"><div>12:00 PM</div></li>
+                    <li class="d"><div>1:00 PM</div></li>
+                    <li class="d"><div>2:00 PM</div></li>
+                    <li class="d"><div>3:00 PM</div></li>
+                    <li class="d"><div>4:00 PM</div></li>
+                    <li class="d"><div>5:00 PM</div></li>
+                    <li class="d"><div>6:00 PM</div></li>
+                    <li class="dd"><div>7:00 PM</div></li>
+                    <li class="dd"><div>8:00 PM</div></li>
+                    <li><div>9:00 PM</div></li>
+                    <li><div>10:00 PM</div></li>
+                    <li><div>11:00 PM</div></li>
+                    <li><div>12:00 AM</div></li>
+                </ul>
+            </div>
+
+
+            <div class="add_btn" onclick="addZone()">
+                <span class="plus_icon"></span>
+                <h2>Add Time Zone</h2>
+            </div>
+
+
+        </div>
+    </section>
+
+
+</section>
+
+<script>
+    
+
+const primaryZone = document.getElementById('primary');
+const tz = document.querySelectorAll(".tz");
+const dropbtn = document.querySelectorAll(".dropbtn");
+const cityDropdown = document.querySelectorAll(".cityDropdown");
+const cityOption = document.querySelectorAll("a");
+
+const d = new Date();
+const dYear = d.getFullYear();
+const dMonth = d.getMonth();
+const dDate = d.getDate();
+const yearStart = new Date(d.getFullYear(), 0, 0);
+
+function lastSunday(year, month) { //Calculates the last Sunday of a particular month in a particular year
+    var date = new Date(year,month,1,12);
+    let weekday = date.getDay();
+    let dayDiff = weekday===0 ? 7 : weekday;
+    let lastSunday = date.setDate(date.getDate() - dayDiff);
+    return date.toDateString();
+}
+function firstSunday(year, month) { //Calculates the first Sunday of a particular month in a particular year
+    let tempDate = new Date();
+    tempDate.setMonth(month);
+    tempDate.setYear(year);
+    tempDate.setDate(1);
+
+    let day = tempDate.getDay();
+    let toNextSun = day !== 0 ? 7 - day : 0;
+    tempDate.setDate(tempDate.getDate() + toNextSun);
+    
+    return tempDate.toDateString();
+}
+
+// Current Date as value between 1 to 366
+const currDayNum = Math.floor(((d - yearStart) + ((yearStart.getTimezoneOffset() - d.getTimezoneOffset()) * 60 * 1000)) / (1000 * 60 * 60 * 24));
+
+// Key dates as values between 1 to 366
+const lastSunMar = Math.ceil((Math.abs((new Date(lastSunday(dYear,3))) - yearStart)) / (1000 * 60 * 60 * 24)); 
+const lastSunSep = Math.ceil((Math.abs((new Date(lastSunday(dYear,9))) - yearStart)) / (1000 * 60 * 60 * 24)); 
+const lastSunOct = Math.ceil((Math.abs((new Date(lastSunday(dYear,10))) - yearStart)) / (1000 * 60 * 60 * 24)); 
+const firstSunMar = Math.ceil((Math.abs((new Date(firstSunday(dYear,2))) - yearStart)) / (1000 * 60 * 60 * 24)); 
+const secSunMar = Math.ceil((Math.abs((new Date(firstSunday(dYear,2))) - yearStart)) / (1000 * 60 * 60 * 24)) + 7; 
+const firstSunApr = Math.ceil((Math.abs((new Date(firstSunday(dYear,3))) - yearStart)) / (1000 * 60 * 60 * 24)); 
+const firstSunOct = Math.ceil((Math.abs((new Date(firstSunday(dYear,9))) - yearStart)) / (1000 * 60 * 60 * 24)); 
+const firstSunNov = Math.ceil((Math.abs((new Date(firstSunday(dYear,10))) - yearStart)) / (1000 * 60 * 60 * 24)); 
+
+/*
+const lastSundayMar = lastSunday(dYear,3); //month value is 1-12
+const lastSundaySep = lastSunday(dYear,9); //month value is 1-12
+const lastSundayOct = lastSunday(dYear,10); //month value is 1-12
+const firstSundayApr = firstSunday(dYear,3); //month value is 0-11
+const firstSundayOct = firstSunday(dYear,9); //month value is 0-11
+const firstSundayNov = firstSunday(dYear,10); //month value is 0-11
+console.log('last Sunday of Mar: ' + lastSundayMar);
+console.log('last Sunday of Sep: ' + lastSundaySep);
+console.log('last Sunday of Oct: ' + lastSundayOct);
+console.log('first Sunday of Apr: ' + firstSundayApr);
+console.log('first Sunday of Oct: ' + firstSundayOct);
+console.log('first Sunday of Nov: ' + firstSundayNov);
+*/
+
+
+
+function cityListToggle() { // Opens the city list when you click on the city name
+    const parentZone = event.target.closest(".tz");
+    
+    if (parentZone.classList.contains('show')) {
+        parentZone.classList.remove('show');
+    } else {
+        parentZone.classList.add('show');
+    }
+}
+
+function cityFilter() { // Filters the city list with the select
+    const parentDropdown = event.target.closest(".cityDropdown");
+    var input, filter, ul, li, a, i;
+    input = event.target;
+    filter = input.value.toUpperCase();
+    a = parentDropdown.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+
+function dstUSAsync() {
+    var elements = document.querySelectorAll('.tz[dst="true"]');
+    if (secSunMar < currDayNum && currDayNum < firstSunNov) {
+        for (var i = 0; i < elements.length; i++) { elements[i].setAttribute("dstVal", "1"); }
+    } else {
+        for (var i = 0; i < elements.length; i++) { elements[i].setAttribute("dstVal", "0"); }
+    }
+}
+function dstEUsync() {
+    var elements = document.querySelectorAll('.tz[eu="true"]');
+    if (lastSunMar < currDayNum && currDayNum < lastSunOct) {
+        for (var i = 0; i < elements.length; i++) { elements[i].setAttribute("dstVal", "1"); }
+    } else {
+        for (var i = 0; i < elements.length; i++) { elements[i].setAttribute("dstVal", "0"); }
+    }
+}
+function dstAUSsync() {
+    var elements = document.querySelectorAll('.tz[aus="true"]');
+    if (currDayNum < firstSunApr) {
+        for (var i = 0; i < elements.length; i++) { elements[i].setAttribute("dstVal", "1"); }
+    } else if (firstSunOct < currDayNum) {
+        for (var i = 0; i < elements.length; i++) { elements[i].setAttribute("dstVal", "1"); }
+    } else {
+        for (var i = 0; i < elements.length; i++) { elements[i].setAttribute("dstVal", "0"); }
+    }
+}
+function dstNZsync() {
+    var elements = document.querySelectorAll('.tz[nz="true"]');
+    if (currDayNum < firstSunApr) {
+        for (var i = 0; i < elements.length; i++) { elements[i].setAttribute("dstVal", "1"); }
+    } else if (lastSunSep < currDayNum) {
+        for (var i = 0; i < elements.length; i++) { elements[i].setAttribute("dstVal", "1"); }
+    } else {
+        for (var i = 0; i < elements.length; i++) { elements[i].setAttribute("dstVal", "0"); }
+    }
+}
+
+function syncDST() {
+    dstUSAsync();
+    dstEUsync();
+    dstAUSsync();
+    dstNZsync();
+}
+
+function syncZones() { // Syncs all of the time zones to the primary zone
+    document.querySelectorAll(".tz:not(#primary)").forEach(e => {
+        e.classList.remove('plusminus', 'plus_1', 'plus_2', 'plus_3', 'plus_4', 'plus_5', 'plus_6', 'plus_7', 'plus_8', 'plus_9', 'plus_10', 'plus_11', 'plus_12', 'minus_1', 'minus_2', 'minus_3', 'minus_4', 'minus_5', 'minus_6', 'minus_7', 'minus_8', 'minus_9', 'minus_10', 'minus_11', 'minus_12');
+
+        syncDST();
+
+        const individualZone = e.getAttribute('zone');
+        const newDaylightValue = e.getAttribute('dstVal');
+        const originDaylightValue = primaryZone.getAttribute('dstVal');
+        const daylightValue = originDaylightValue - newDaylightValue;
+        const primaryZoneValue = primaryZone.getAttribute('zone');
+
+        const cityNewZonePlusMinus = (individualZone - daylightValue) - primaryZoneValue;
+ 
+        if      (cityNewZonePlusMinus == '-23') {   e.classList.add('plus_1', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-22') {   e.classList.add('plus_2', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-21') {   e.classList.add('plus_3', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-20') {   e.classList.add('plus_4', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-19') {   e.classList.add('plus_5', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-18') {   e.classList.add('plus_6', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-17') {   e.classList.add('plus_7', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-16') {   e.classList.add('plus_8', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-15') {   e.classList.add('plus_9', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-14') {   e.classList.add('plus_10', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-13') {   e.classList.add('plus_11', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-12') {   e.classList.add('minus_12', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-11') {   e.classList.add('minus_11', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-10') {   e.classList.add('minus_10', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-9') {   e.classList.add('minus_9', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-8') {   e.classList.add('minus_8', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-7') {   e.classList.add('minus_7', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-6') {   e.classList.add('minus_6', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-5') {   e.classList.add('minus_5', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-4') {   e.classList.add('minus_4', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-3') {   e.classList.add('minus_3', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-2') {   e.classList.add('minus_2', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '-1') {   e.classList.add('minus_1', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '0') {   return }
+        else if (cityNewZonePlusMinus == '1') {   e.classList.add('plus_1', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '2') {   e.classList.add('plus_2', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '3') {   e.classList.add('plus_3', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '4') {   e.classList.add('plus_4', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '5') {   e.classList.add('plus_5', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '6') {   e.classList.add('plus_6', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '7') {   e.classList.add('plus_7', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '8') {   e.classList.add('plus_8', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '9') {   e.classList.add('plus_9', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '10') {   e.classList.add('plus_10', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '11') {   e.classList.add('plus_11', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '12') {   e.classList.add('plus_12', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '13') {   e.classList.add('minus_11', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '14') {   e.classList.add('minus_10', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '15') {   e.classList.add('minus_9', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '16') {   e.classList.add('minus_8', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '17') {   e.classList.add('minus_7', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '18') {   e.classList.add('minus_6', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '19') {   e.classList.add('minus_5', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '20') {   e.classList.add('minus_4', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '21') {   e.classList.add('minus_3', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '22') {   e.classList.add('minus_2', 'plusminus'); }
+        else if (cityNewZonePlusMinus == '23') {   e.classList.add('minus_1', 'plusminus'); }
+    });
+}
+
+function cityChosen() {
+    const parentZone = event.target.closest(".tz");
+    const parentZoneValue = parentZone.getAttribute('zone');
+    
+    const cityDisplay = parentZone.querySelector(".city_display");
+    const cityZoneCodeDisplay = parentZone.querySelector(".zone_display");
+
+    const cityNewVal = event.target.getAttribute('city');
+    const cityNewZoneValue = event.target.getAttribute('zone');
+    const cityNewZoneCodeValue = event.target.getAttribute('zone_code');
+    const cityNewDstVal = event.target.getAttribute('dst');
+    const cityNewEuVal = event.target.getAttribute('eu');
+    const cityNewAusVal = event.target.getAttribute('aus');
+    const cityNewNzVal = event.target.getAttribute('nz');
+
+    cityDisplay.innerHTML = cityNewVal;
+    parentZone.classList.remove('show', 'unset');
+    cityZoneCodeDisplay.innerHTML = cityNewZoneCodeValue;
+    parentZone.setAttribute("zone", cityNewZoneValue);
+    parentZone.setAttribute("dst", cityNewDstVal);
+    parentZone.setAttribute("eu", cityNewEuVal);
+    parentZone.setAttribute("aus", cityNewAusVal);
+    parentZone.setAttribute("nz", cityNewNzVal);
+
+    syncZones();
+}
+
+function removeZone() {
+    const parentZone = event.target.closest(".tz");
+    parentZone.remove();
+}
+
+function addZone() {
+    var div = document.createElement('div');
+    div.setAttribute('class', 'tz unset');
+    div.innerHTML = `
+        <div class="tz_cities">
+            <button class="dropbtn" onclick="cityListToggle()">Dropdown</button>
+            <div class="blocker" onclick="cityListToggle()"></div>
+            <div class="cityDropdown">
+                <input type="text" placeholder="Search.." class="cityInput" onkeyup="cityFilter()">
+                        <a onclick="cityChosen()" zone="13" zone_code="WAT" city="Abuja">Abuja, Nigeria</a>
+                        <a onclick="cityChosen()" zone="3" zone_code="AKST" dst="true" city="Anchorage">Anchorage, USA</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EEST" city="Ankara">Ankara, Turkey</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EAT" city="Antananarivo">Antananarivo, Madagascar</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="PYST" city="Asuncion">Asuncion, Paraguay</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="EET" eu="true" city="Athens">Athens, Greece</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Atlanta">Atlanta, USA</a>
+                        <a onclick="cityChosen()" zone="0" zone_code="NZST" nz="true" city="Auckland">Auckland, New Zealand</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EEST" city="Baghdad">Baghdad, Iraq</a>
+                        <a onclick="cityChosen()" zone="0" zone_code="AoE" city="Baker Island">Baker Island</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" city="Bamako">Bamako, Mali</a>
+                        <a onclick="cityChosen()" zone="19" zone_code="ICT" city="Bangkok">Bangkok, Thailand</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Barcelona">Barcelona, Spain</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="CST" city="Beijing">Beijing, China</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="BRT" city="Bel&eacute;m">Bel&eacute;m, Brazil</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Belgrade">Belgrade, Serbia</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="Belmopan">Belmopan, Belize</a>
+                        <a onclick="cityChosen()" zone="18" zone_code="IST" city="Bengaluru">Bengaluru, India</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Berlin">Berlin, Germany</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="COT" city="Bogota">Bogota, Columbia</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Boston">Boston, USA</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="BRT" city="Brasilia">Brasilia, Brazil</a>
+                        <a onclick="cityChosen()" zone="22" zone_code="AEST" city="Brisbane">Brisbane, Australia</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Budapest">Budapest, Hungary</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="ART" city="Buenos Aires">Buenos Aires, Argentina</a>
+                        <a onclick="cityChosen()" zone="22" zone_code="AEST" city="Cairns">Cairns, Australia</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" dst="true" city="Calgary">Calgary, Canada</a>
+                        <a onclick="cityChosen()" zone="22" zone_code="AEST" aus="true" city="Canberra">Canberra, Australia</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="SAST" city="Cape Town">Cape Town, South Africa</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="VET" city="Caracas">Caracas, Venezuela</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" eu="true" city="Cardiff">Cardiff, UK</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" dst="true" city="Chicago">Chicago, USA</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Copenhagen">Copenhagen, Denmark</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="ART" city="C&oacute;rdoba">C&oacute;rdoba, Argentina</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EEST" city="Damascus">Damascus, Syria</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" dst="true" city="Denver">Denver, USA</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Detroit">Detroit, USA</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" eu="true" city="Dublin">Dublin, Ireland</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" eu="true" city="Edinburgh">Edinburgh, UK</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" dst="true" city="Edmonton">Edmonton, Canada</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="BRT" city="Fortaleza">Fortaleza, Brazil</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="Guatemala City">Guatemala City, Guatemala</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="AST" dst="true" city="Halifax">Halifax, Canada</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="AST" city="Hamilton">Hamilton, Bermuda</a>
+                        <a onclick="cityChosen()" zone="19" zone_code="ICT" city="Hanoi">Hanoi, Vietnam</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="EST" dst="true" city="Havana">Havana, Cuba</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="EET" eu="true" city="Helsinki">Helsinki, Finland</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" city="Hermosillo">Hermosillo, Mexico</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="HKT" city="Hong Kong">Hong Kong, Hong Kong</a>
+                        <a onclick="cityChosen()" zone="2" zone_code="HST" city="Honolulu">Honolulu, USA</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" dst="true" city="Houston">Houston, USA</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Indianapolis">Indianapolis, USA</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EEST" city="Instanbul">Instanbul, Turkey</a>
+                        <a onclick="cityChosen()" zone="19" zone_code="ICT" city="Jakarta">Jakarta, Indonesia</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="SAST" city="Johannesburg">Johannesburg, South Africa</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" dst="true" city="Kansas City">Kansas City, USA</a>
+                        <a onclick="cityChosen()" zone="17" zone_code="PKT" city="Karachi">Karachi, Pakistan</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" city="Kingston">Kingston, Jamaica</a>
+                        <a onclick="cityChosen()" zone="18" zone_code="IST" city="Kolkata">Kolkata, India</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="MYT" city="Kuala Lumpur">Kuala Lumpur, Malaysia</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="EET" eu="true" city="Kyiv">Kyiv, Ukraine</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="BOT" city="La Paz">La Paz, Bolivia</a>
+                        <a onclick="cityChosen()" zone="4" zone_code="PST" dst="true" city="Las Vegas">Las Vegas, USA</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="PET" city="Lima">Lima, Peru</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" eu="true" city="London">London, UK</a>
+                        <a onclick="cityChosen()" zone="4" zone_code="PST" dst="true" city="Los Angeles">Los Angeles, USA</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" eu="true" city="Lisbon">Lisbon, Portugal</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Luxembourg">Luxembourg</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Madrid">Madrid, Spain</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="Managua">Managua, Nicaragua</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="BRT" city="Manaus">Manaus, Brazil</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="PHST" city="Manila">Manila, Phillipines</a>
+                        <a onclick="cityChosen()" zone="21" zone_code="WIT" city="Manokwari">Manokwari, Indonesia</a>
+                        <a onclick="cityChosen()" zone="22" zone_code="AEST" aus="true" city="Melbourne">Melbourne, Australia</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="Mexico City">Mexico City, Mexico</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Miami">Miami, USA</a>
+                        <a onclick="cityChosen()" zone="1" zone_code="SST" city="Midway">Midway</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" dst="true" city="Minneapolis">Minneapolis, USA</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="MSK" city="Minsk">Minsk, Belarus</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" city="Monrovia">Monrovia, Liberia</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="URT" city="Montevideo">Montevideo, Uruguay</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Montr&eacute;al">Montr&eacute;al, Canada</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="MSK" city="Moscow">Moscow, Russia</a>
+                        <a onclick="cityChosen()" zone="18" zone_code="IST" city="Mumbai">Mumbai, India</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" city="Nassau">Nassau, Bahamas</a>
+                        <a onclick="cityChosen()" zone="18" zone_code="IST" city="New Delhi">New Delhi, India</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" dst="true" city="New Orleans">New Orleans, USA</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="New York City">New York City, USA</a>
+                        <a onclick="cityChosen()" zone="10" zone_code="CGT" city="Nuuk">Nuuk, Greenland</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Oslow">Oslow, Norway</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Ottowa">Ottowa, Canada</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Paris">Paris, France</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="AWST" city="Perth">Perth, Australia</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Philadelphia">Philadelphia, USA</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" city="Phoenix">Phoenix, USA</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" city="Port-au-Prince">Port-au-Prince, Haiti</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Prague">Prague, Czechia</a>
+                        <a onclick="cityChosen()" zone="14" zone_code="SAST" city="Pretoria">Pretoria, South Africa</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="CLST" city="Punta Arenas">Punta Arenas, Chile</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="ECT" city="Quito">Quito, Ecuador</a>
+                        <a onclick="cityChosen()" zone="12" zone_code="GMT" city="Reykjavik">Reykjavik, Iceland</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="ACT" city="Rio Branco">Rio Branco, Brazil</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="AMT" city="Rio de Janeiro">Rio de Janeiro, Brazil</a>
+                        <a onclick="cityChosen()" zone="15" zone_code="EEST" city="Riyadh">Riyadh, Saudi Arabia</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Rome">Rome, Italy</a>
+                        <a onclick="cityChosen()" zone="5" zone_code="MST" dst="true" city="Salt Lake City">Salt Lake City, USA</a>
+                        <a onclick="cityChosen()" zone="4" zone_code="PST" dst="true" city="San Diego">San Diego, USA</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="San Jose">San Jose, Costa Rica</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="San Salvador">San Salvador, El Salvador</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="CLST" city="Santiago">Santiago, Chile</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="AST" city="Santo Domingo">Santo Domingo, Dominican Republic</a>
+                        <a onclick="cityChosen()" zone="9" zone_code="BRT" city="S&atilde;o Paulo">S&atilde;o Paulo, Brazil</a>
+                        <a onclick="cityChosen()" zone="4" zone_code="PST" dst="true" city="Seattle">Seattle, USA</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="CST" city="Shanghai">Shanghai, China</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="SGT" city="Singapore">Singapore</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Stockholm">Stockholm, Sweden</a>
+                        <a onclick="cityChosen()" zone="8" zone_code="BOT" city="Sucre">Sucre, Bolivia</a>
+                        <a onclick="cityChosen()" zone="22" zone_code="AEST" aus="true" city="Sydney">Sydney, Australia</a>
+                        <a onclick="cityChosen()" zone="20" zone_code="CST" city="Taipei">Taipei, Taiwan</a>
+                        <a onclick="cityChosen()" zone="6" zone_code="CST" city="Tegucigalpa">Tegucigalpa, Honduras</a>
+                        <a onclick="cityChosen()" zone="21" zone_code="JST" city="Tokyo">Tokyo, Japan</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Toronto">Toronto, Canada</a>
+                        <a onclick="cityChosen()" zone="4" zone_code="PST" dst="true" city="Vancouver">Vancouver, Canada</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Vienna">Vienna, Austria</a>
+                        <a onclick="cityChosen()" zone="19" zone_code="ICT" city="Vientiane">Vientiane, Laos</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Warsaw">Warsaw, Poland</a>
+                        <a onclick="cityChosen()" zone="7" zone_code="EST" dst="true" city="Washington DC">Washington DC, USA</a>
+                        <a onclick="cityChosen()" zone="0" zone_code="NZST" nz="true" city="Wellington">Wellington, New Zealand</a>
+                        <a onclick="cityChosen()" zone="13" zone_code="CET" eu="true" city="Z&uuml;rich">Z&uuml;rich, Switzerland</a>
+            </div>
+        </div>
+        <h2 class="city_display">Select City</h2>
+        <h4 class="zone_display">&nbsp;</h4>
+        <div class="remove_container"><button class="remove" onclick="removeZone()">Remove</button></div>
+        <ul class="times">
+            <li><div>1:00 AM</div></li>
+            <li><div>2:00 AM</div></li>
+            <li><div>3:00 AM</div></li>
+            <li><div>4:00 AM</div></li>
+            <li class="dd"><div>5:00 AM</div></li>
+            <li class="dd"><div>6:00 AM</div></li>
+            <li class="dd"><div>7:00 AM</div></li>
+            <li class="d"><div>8:00 AM</div></li>
+            <li class="d"><div>9:00 AM</div></li>
+            <li class="d"><div>10:00 AM</div></li>
+            <li class="d"><div>11:00 AM</div></li>
+            <li class="d"><div>12:00 PM</div></li>
+            <li class="d"><div>1:00 PM</div></li>
+            <li class="d"><div>2:00 PM</div></li>
+            <li class="d"><div>3:00 PM</div></li>
+            <li class="d"><div>4:00 PM</div></li>
+            <li class="d"><div>5:00 PM</div></li>
+            <li class="d"><div>6:00 PM</div></li>
+            <li class="dd"><div>7:00 PM</div></li>
+            <li class="dd"><div>8:00 PM</div></li>
+            <li><div>9:00 PM</div></li>
+            <li><div>10:00 PM</div></li>
+            <li><div>11:00 PM</div></li>
+            <li><div>12:00 AM</div></li>
+        </ul>
+    `;
+    document.getElementById('tz_zones').appendChild(div);
+}
+
+
+
+
+
+window.addEventListener("load", function(){
+    syncZones();
+});
+
+
+
+
+</script>
